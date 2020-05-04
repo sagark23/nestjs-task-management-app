@@ -32,4 +32,12 @@ export class TasksService {
     deleteTask(id: string): void {
         this.tasks.splice(this.tasks.findIndex(item => item.id === id), 1)
     }
+
+    updateTaskStatus(id: string, status: TaskStatus): Task {
+        const task = this.getTaskById(id);
+
+        task.status = status;
+
+        return task;
+    }
 }
