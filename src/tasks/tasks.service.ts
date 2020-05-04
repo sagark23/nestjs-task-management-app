@@ -29,7 +29,7 @@ export class TasksService {
         return task;
     }
 
-    deleteTask(id: string) {
+    deleteTask(id: string): void {
         this.tasks.splice(this.tasks.findIndex(item => item.id === id), 1)
     }
 }
