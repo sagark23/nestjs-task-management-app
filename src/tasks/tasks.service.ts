@@ -21,11 +21,11 @@ export class TasksService {
 
         let tasks;
         if(status){
-            tasks = this.tasks.filter(task => task.status === filterTaskDto.status);
+            tasks = this.getAllTasks().filter(task => task.status === filterTaskDto.status);
         }
 
         if(search){
-            tasks = this.tasks.filter(
+            tasks = tasks.filter(
                 task => task.title.includes(search) ||
                     task.description.includes(search)
             )
