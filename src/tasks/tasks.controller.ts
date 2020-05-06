@@ -2,7 +2,7 @@ import {
     Body,
     Controller,
     Delete,
-    Get,
+    Get, Logger,
     Param,
     ParseIntPipe,
     Patch,
@@ -20,11 +20,14 @@ import {Task} from "./task.entity";
 
 @Controller('tasks')
 export class TasksController {
+    private logger = new Logger('TasksController');
+
     constructor(private taskService: TasksService) {
     }
 
     @Get()
     getTasks(@Query(ValidationPipe) filterTaskDto: FilterTaskDto) : Promise<Task[]> {
+        this.logger.verbose(`Retrieving all tasks, Filters: ${JSON.stringify(filterTaskDto)}`)
         return this.taskService.getTasks(filterTaskDto);
     }
 
