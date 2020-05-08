@@ -39,7 +39,7 @@ export class TasksController {
     @Post()
     @UsePipes(ValidationPipe)
     createTask(@Body() createTaskDto: CreateTaskDto): Promise<Task> {
-        console.log('createTaskDto', createTaskDto);
+        this.logger.verbose(`Task to be saved: ${JSON.stringify(createTaskDto)}`)
         return this.taskService.createTask(createTaskDto);
     }
 
